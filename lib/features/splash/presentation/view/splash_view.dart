@@ -1,32 +1,38 @@
+import 'package:daleel/core/functions/custom_navigations.dart';
+import 'package:daleel/core/utils/app_strings.dart';
+import 'package:daleel/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
-class SplashView extends StatelessWidget {
+class SplashView extends StatefulWidget {
   const SplashView({super.key});
+
+  @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends State<SplashView> {
+  @override
+  void initState() {
+    delayedNavigation(context);
+
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.lightBlueAccent, Colors.white])),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.only(
-                  left: 20.0, right: 20.0, top: 70.0, bottom: 20.0),
-              child: const Text("Hello World", style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold, color: Colors.white),),
-            ),
-            Container(
-              padding: const EdgeInsets.all(10.0),
-              child: const Icon(Icons.bubble_chart, color: Colors.white, size: 130.0,),
-            ),
-          ],
+      body: Center(
+        child: Text(
+          AppStrings.appName,
+          style: CustomTextStyles.pacifico400style64,
         ),
       ),
     );
   }
+}
+
+
+void delayedNavigation(context) {
+  Future.delayed(const Duration(seconds: 2),
+          () => customNavigation(context, '/onBoarding'));
 }
