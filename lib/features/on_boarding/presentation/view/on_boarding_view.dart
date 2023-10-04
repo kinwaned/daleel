@@ -13,7 +13,8 @@ class OnBoardingView extends StatelessWidget {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
             children: [
               const SizedBox(
                 height: 40,
@@ -21,9 +22,11 @@ class OnBoardingView extends StatelessWidget {
               const CustomNavBar(),
               CustomOnBoardingWidgetBody(),
               const SizedBox(
-                height: 40,
+                height: 88,
               ),
-              const CustomBtn(text: AppStrings.next,),
+              const CustomBtn(
+                text: AppStrings.next,
+              ),
               const SizedBox(
                 height: 17,
               ),

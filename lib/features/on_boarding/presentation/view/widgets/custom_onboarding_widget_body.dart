@@ -2,6 +2,7 @@ import 'package:daleel/core/utils/app_assets.dart';
 import 'package:daleel/core/utils/app_text_styles.dart';
 import 'package:daleel/features/on_boarding/presentation/view/widgets/custom_smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
+
 class CustomOnBoardingWidgetBody extends StatelessWidget {
   CustomOnBoardingWidgetBody({super.key});
 
@@ -9,15 +10,26 @@ class CustomOnBoardingWidgetBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      height: 600,
       child: PageView.builder(
+        physics: const BouncingScrollPhysics(),
           controller: _controller,
           itemCount: 3,
           itemBuilder: (context, index) {
             return Column(
               children: [
-                Image.asset(
-                  Assets.assetsImagesOnBoarding1,
+                Container(
+                  height: 290,
+                  width: 343,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(
+                        Assets.assetsImagesOnBoarding1,
+                      ),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                 ),
                 const SizedBox(
                   height: 24,
