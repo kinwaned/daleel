@@ -1,5 +1,5 @@
-import 'package:daleel/core/utils/app_assets.dart';
 import 'package:daleel/core/utils/app_text_styles.dart';
+import 'package:daleel/features/on_boarding/data/models/onboarding_models.dart';
 import 'package:daleel/features/on_boarding/presentation/view/widgets/custom_smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 
@@ -15,17 +15,17 @@ class CustomOnBoardingWidgetBody extends StatelessWidget {
       child: PageView.builder(
         physics: const BouncingScrollPhysics(),
           controller: _controller,
-          itemCount: 3,
+          itemCount: onBoardingData.length,
           itemBuilder: (context, index) {
             return Column(
               children: [
                 Container(
                   height: 290,
                   width: 343,
-                  decoration: const BoxDecoration(
+                  decoration:  BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                        Assets.assetsImagesOnBoarding1,
+                        onBoardingData[index].image,
                       ),
                       fit: BoxFit.fill,
                     ),
@@ -39,7 +39,7 @@ class CustomOnBoardingWidgetBody extends StatelessWidget {
                   height: 24,
                 ),
                 Text(
-                  'Explore The history with Daleel in a smart way',
+                  onBoardingData[index].title,
                   style: CustomTextStyles.popins500style24
                       .copyWith(fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
@@ -47,8 +47,8 @@ class CustomOnBoardingWidgetBody extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                const Text(
-                  'Using our app’s history libraries you can find many historical periods',
+                 Text(
+                  onBoardingData[index].subTitle,
                   style: CustomTextStyles.popins500style16,
                   textAlign: TextAlign.center,
                 ),
