@@ -1,7 +1,8 @@
-import 'package:daleel/core/functions/custom_navigations.dart';
+import 'package:daleel/core/functions/custom_navigation.dart';
 import 'package:daleel/features/on_boarding/presentation/view/widgets/custom_nav_bar.dart';
 import 'package:daleel/features/on_boarding/presentation/view/widgets/custom_onboarding_widget_body.dart';
 import 'package:daleel/features/on_boarding/presentation/view/widgets/get_buttons.dart';
+import 'package:daleel/features/splash/presentation/view/functions/on_boarding_fun.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -29,6 +30,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               ),
               CustomNavBar(
                 onTap: () {
+                  onBoardingVisited();
                   customReplacementNavigation(context, '/SignUp');
                 },
               ),

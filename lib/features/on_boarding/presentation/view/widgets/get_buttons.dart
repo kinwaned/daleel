@@ -1,4 +1,4 @@
-import 'package:daleel/core/functions/custom_navigations.dart';
+import 'package:daleel/core/functions/custom_navigation.dart';
 import 'package:daleel/core/utils/app_strings.dart';
 import 'package:daleel/core/utils/app_text_styles.dart';
 import 'package:daleel/core/widgets/custom_btn.dart';
@@ -14,7 +14,7 @@ class GetButtons extends StatelessWidget {
     if ( currentIndex == onBoardingData.length - 1){
       return Column(
         children: [
-          CustomBtn(text: AppStrings.signUp, onPressed: () {
+          CustomBtn(text: AppStrings.createAccount, onPressed: () {
             customReplacementNavigation(context, '/SignUp');
           }),
           const SizedBox(height: 10),
