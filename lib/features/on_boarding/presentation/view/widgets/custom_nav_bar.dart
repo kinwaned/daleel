@@ -13,7 +13,7 @@ class CustomNavBar extends StatelessWidget {
         onTap: onTap,
         child: Text(
           AppStrings.skip,
-          style: CustomTextStyles.popins500style16
+          style: CustomTextStyles.poppins500style16
               .copyWith(fontWeight: FontWeight.w400),
         ),
       ),

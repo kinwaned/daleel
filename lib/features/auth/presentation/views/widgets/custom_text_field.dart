@@ -11,7 +11,7 @@ class CustomTextField extends StatelessWidget {
       padding: const EdgeInsets.only(right: 8, left: 8,top: 24),
       child: TextField(
         decoration: InputDecoration(
-          labelStyle: CustomTextStyles.pacifico500style12,
+          labelStyle: CustomTextStyles.poppins500style12,
           labelText: labelText,
           enabledBorder: getBorderStyle(),
           focusedBorder: getBorderStyle(),

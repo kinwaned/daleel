@@ -1,7 +1,6 @@
-import 'package:daleel/core/utils/app_colors.dart';
 import 'package:daleel/core/utils/app_strings.dart';
-import 'package:daleel/core/utils/app_text_styles.dart';
 import 'package:daleel/core/widgets/custom_btn.dart';
+import 'package:daleel/features/auth/presentation/views/widgets/already_have_an_account_widget.dart';
 import 'package:daleel/features/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:daleel/features/auth/presentation/views/widgets/terms_and_conditions.dart';
 import 'package:daleel/features/auth/presentation/views/widgets/welcome_text_widget.dart';
@@ -12,7 +11,7 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: CustomScrollView(
@@ -59,28 +58,13 @@ class SignUpView extends StatelessWidget {
               ),
             ),
             const SliverToBoxAdapter(
-              child: HaveAnAccountWidget(text1: AppStrings.alreadyHaveAnAccount, text2: AppStrings.signIn),
+              child: HaveAnAccountWidget(
+                text1: AppStrings.alreadyHaveAnAccount,
+                text2: AppStrings.signIn,
+              ),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class HaveAnAccountWidget extends StatelessWidget {
-  const HaveAnAccountWidget({super.key, required this.text1, required this.text2});
-  final String text1;
-  final String text2;
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      child: Text.rich(
-        TextSpan(children:
-        [
-          TextSpan(text: text1,style:CustomTextStyles.pacifico400style12 ),
-          TextSpan(text:text2 ,style:CustomTextStyles.pacifico400style12.copyWith(color: AppColors.grey)),
-        ]),
       ),
     );
   }

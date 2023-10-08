@@ -20,7 +20,7 @@ class CustomBtn extends StatelessWidget {
             backgroundColor: color ?? AppColors.primaryColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10))),
-        child: Text(text, style: CustomTextStyles.popins500style24.copyWith(fontSize: 18, color: AppColors.offWhite),),
+        child: Text(text, style: CustomTextStyles.poppins500style24.copyWith(fontSize: 18, color: AppColors.offWhite),),
       ),
     );
   }

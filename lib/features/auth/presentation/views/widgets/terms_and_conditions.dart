@@ -15,10 +15,10 @@ class TermsAndConditionsWidget extends StatelessWidget {
           TextSpan(children: [
             TextSpan(
                 text: AppStrings.iHaveAgreeToOur,
-                style: CustomTextStyles.pacifico400style12),
+                style: CustomTextStyles.poppins400style12),
             TextSpan(
                 text: AppStrings.termsAndCondition,
-                style: CustomTextStyles.pacifico400style12.copyWith(decoration: TextDecoration.underline, )),
+                style: CustomTextStyles.poppins400style12.copyWith(decoration: TextDecoration.underline, )),
           ]),
         ),
       ],

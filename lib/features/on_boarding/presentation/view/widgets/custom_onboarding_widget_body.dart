@@ -41,7 +41,7 @@ class CustomOnBoardingWidgetBody extends StatelessWidget {
                 ),
                 Text(
                   onBoardingData[index].title,
-                  style: CustomTextStyles.popins500style24
+                  style: CustomTextStyles.poppins500style24
                       .copyWith(fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
@@ -50,7 +50,7 @@ class CustomOnBoardingWidgetBody extends StatelessWidget {
                 ),
                  Text(
                   onBoardingData[index].subTitle,
-                  style: CustomTextStyles.popins500style16,
+                  style: CustomTextStyles.poppins500style16,
                   textAlign: TextAlign.center,
                 ),
               ],

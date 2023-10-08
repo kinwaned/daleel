@@ -11,7 +11,7 @@ class WelcomeTextWidget extends StatelessWidget {
     return Align(
       child: Text(
         text,
-        style: CustomTextStyles.popins600style28,
+        style: CustomTextStyles.poppins600style28,
       ),
     );
   }
