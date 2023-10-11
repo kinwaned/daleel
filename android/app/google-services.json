@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "342532696198",
+    "project_id": "daleel-8028d",
+    "storage_bucket": "daleel-8028d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342532696198:android:0cd0d595bdf028124d0907",
+        "android_client_info": {
+          "package_name": "com.example.daleel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnkUH4hZ7u2L8zJPVzQZdBTx-Z9GmMO1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

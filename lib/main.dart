@@ -1,29 +1,20 @@
+import 'package:daleel/app/daleel_app.dart';
 import 'package:daleel/core/database/cashe/cache_helper.dart';
-import 'package:daleel/core/routes/app_routes.dart';
+import 'package:daleel/core/functions/check_state_changes.dart';
 import 'package:daleel/core/services/service_locator.dart';
-import 'package:daleel/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   setupServiceLocator();
+  authStateChanges();
   await getIt<CacheHelper>().init();
-  runApp(const Daleel.daleel());
-}
-
-class Daleel extends StatelessWidget {
-  const Daleel.daleel({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: ThemeData(
-        scaffoldBackgroundColor: AppColors.offWhite,
-      ),
-      debugShowCheckedModeBanner: false,
-      routerConfig: router ,
-    );
-  }
+  runApp(const Daleel());
 }
 
