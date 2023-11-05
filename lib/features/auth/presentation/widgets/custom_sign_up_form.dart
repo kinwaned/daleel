@@ -1,3 +1,6 @@
+import 'package:daleel/core/functions/custom_navigation.dart';
+import 'package:daleel/core/functions/show_toast.dart';
+import 'package:daleel/core/utils/app_colors.dart';
 import 'package:daleel/core/utils/app_strings.dart';
 import 'package:daleel/core/widgets/custom_btn.dart';
 import 'package:daleel/features/auth/presentation/cubits/auth_cubits/auth_cubit.dart';
@@ -13,33 +16,72 @@ class CustomSignUpForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is SignUpSuccessState) {
+          showToast('Account created successfully!');
+          customReplacementNavigation(context, '/home');
+        } else if (state is SignUpFailureState) {
+          showToast(state.errMessage);
+        }
+      },
       builder: (context, state) {
+        AuthCubit cubit = BlocProvider.of<AuthCubit>(context);
         return Form(
+            key: cubit.signUpFormKey,
             child: Column(
               children: [
-                 CustomTextFormField(
-                  labelText: AppStrings.firstName, onChanged: (firstName) {
-                   BlocProvider.of<AuthCubit>(context).firstName = firstName;
-                 },
+                CustomTextFormField(
+                  labelText: AppStrings.firstName,
+                  onChanged: (firstName) {
+                    cubit.firstName = firstName;
+                  },
                 ),
-                 CustomTextFormField(labelText: AppStrings.lastName,onChanged: (lastName) {
-                   BlocProvider.of<AuthCubit>(context).lastName = lastName;
-                 },),
-                 CustomTextFormField(labelText: AppStrings.emailAddress,onChanged: (email) {
-                   BlocProvider.of<AuthCubit>(context).emailAddress = email;
-                 },),
-                 CustomTextFormField(labelText: AppStrings.password,onChanged: (password) {
-                   BlocProvider.of<AuthCubit>(context).password = password;
-                 },),
-                 const TermsAndConditionsWidget(),
+                CustomTextFormField(
+                  labelText: AppStrings.lastName,
+                  onChanged: (lastName) {
+                    cubit.lastName = lastName;
+                  },
+                ),
+                CustomTextFormField(
+                  labelText: AppStrings.emailAddress,
+                  onChanged: (email) {
+                    cubit.emailAddress = email;
+                  },
+                ),
+                CustomTextFormField(
+                  obscureText: cubit.obscurePasswordTextValue,
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        cubit.obscurePasswordText();
+                      },
+                      icon: Icon(
+                        cubit.obscurePasswordTextValue == true
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                      )),
+                  labelText: AppStrings.password,
+                  onChanged: (password) {
+                    cubit.password = password;
+                  },
+                ),
+                const TermsAndConditionsWidget(),
                 const SizedBox(
                   height: 120,
                 ),
-                CustomBtn(text: AppStrings.signUp, onPressed: () {
-                  BlocProvider.of<AuthCubit>(context).signUpWithEmailAndPassword();
-                  print('pressed');
-                }),
+                state is SignUpLoadingState
+                    ? CircularProgressIndicator(color: AppColors.primaryColor,)
+                    : CustomBtn(
+                        color: cubit.termAndConditionsCheckBox == false
+                            ? AppColors.grey
+                            : null,
+                        text: AppStrings.signUp,
+                        onPressed: () {
+                          if (cubit.termAndConditionsCheckBox == true) {
+                            if (cubit.signUpFormKey.currentState!.validate()) {
+                              cubit.signUpWithEmailAndPassword();
+                            }
+                          }
+                        }),
               ],
             ));
       },

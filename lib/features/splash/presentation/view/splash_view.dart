@@ -3,6 +3,7 @@ import 'package:daleel/core/functions/custom_navigation.dart';
 import 'package:daleel/core/services/service_locator.dart';
 import 'package:daleel/core/utils/app_strings.dart';
 import 'package:daleel/core/utils/app_text_styles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -16,7 +17,7 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
    bool isOnBoardingVisited = getIt<CacheHelper>().getData(key: 'isOnBoardingVisited')?? false;
    if(isOnBoardingVisited == true){
-     delayedNavigation(context, '/SignUp');
+     FirebaseAuth.instance.currentUser == null ? delayedNavigation(context, '/SignUp') : delayedNavigation(context, '/home') ;
    }else{
      delayedNavigation(context, '/onBoarding');
    }

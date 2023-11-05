@@ -3,18 +3,23 @@ import 'package:daleel/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class HaveAnAccountWidget extends StatelessWidget {
-  const HaveAnAccountWidget({super.key, required this.text1, required this.text2});
+  const HaveAnAccountWidget({super.key, required this.text1, required this.text2, this.onTap});
   final String text1;
   final String text2;
+
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return Align(
-      child: Text.rich(
-        TextSpan(children:
-        [
-          TextSpan(text: text1,style:CustomTextStyles.poppins400style12 ),
-          TextSpan(text:text2 ,style:CustomTextStyles.poppins400style12.copyWith(color: AppColors.grey)),
-        ]),
+    return GestureDetector(
+      onTap: onTap,
+      child: Align(
+        child: Text.rich(
+          TextSpan(children:
+          [
+            TextSpan(text: text1,style:CustomTextStyles.poppins400style12 ),
+            TextSpan(text:text2 ,style:CustomTextStyles.poppins400style12.copyWith(color: AppColors.grey)),
+          ]),
+        ),
       ),
     );
   }

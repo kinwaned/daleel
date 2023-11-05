@@ -18,7 +18,9 @@ class TermsAndConditionsWidget extends StatelessWidget {
                 style: CustomTextStyles.poppins400style12),
             TextSpan(
                 text: AppStrings.termsAndCondition,
-                style: CustomTextStyles.poppins400style12.copyWith(decoration: TextDecoration.underline, )),
+                style: CustomTextStyles.poppins400style12.copyWith(
+                  decoration: TextDecoration.underline,
+                )),
           ]),
         ),
       ],

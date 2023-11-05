@@ -1,6 +1,7 @@
 import 'package:daleel/features/auth/presentation/cubits/auth_cubits/auth_cubit.dart';
 import 'package:daleel/features/auth/presentation/views/sign_in_view.dart';
 import 'package:daleel/features/auth/presentation/views/sin_up_view.dart';
+import 'package:daleel/features/home/presentation/views/home_view.dart';
 import 'package:daleel/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:daleel/features/splash/presentation/view/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,6 +32,11 @@ final GoRouter router = GoRouter(
             create: (context) => AuthCubit(),
             child: SignInView(),
           ),
+    ),
+    GoRoute(
+      path: '/home',
+      builder: (context, state) =>
+          const HomeView(),
     ),
   ],
 );
