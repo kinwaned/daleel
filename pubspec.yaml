@@ -24,7 +24,7 @@ dependencies:
   cached_network_image: ^3.3.0
   bloc: ^8.1.2
   smooth_page_indicator: ^1.1.0
-  flutter_svg: ^2.0.7
+  flutter_svg: ^2.0.9
   fluttertoast: ^8.2.2
 
 
@@ -62,7 +62,7 @@ flutter:
         - asset: assets/fonts/Poppins-Regular.ttf
     - family: Saira
       fonts:
-        - asset: assets/fonts/Saira_Condensed-Regular.ttf
+        - asset: assets/fonts/Saira-Regular.ttf
 
 
 flutter_assets:

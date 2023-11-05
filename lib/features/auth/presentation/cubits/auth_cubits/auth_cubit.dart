@@ -12,6 +12,7 @@ class AuthCubit extends Cubit<AuthState> {
    String? password;
    String? emailAddress;
    GlobalKey<FormState> signUpFormKey = GlobalKey();
+   GlobalKey<FormState> signInFormKey = GlobalKey();
 
    bool? obscurePasswordTextValue = true;
 
@@ -24,7 +25,6 @@ class AuthCubit extends Cubit<AuthState> {
         password: password!,
       );
       emit(SignUpSuccessState());
-      print('sent');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         emit(SignUpFailureState(errMessage: 'The password provided is too weak.'));
@@ -48,5 +48,24 @@ class AuthCubit extends Cubit<AuthState> {
       obscurePasswordTextValue = true;
     }
     emit(ObscurePasswordTextUpdateState());
+  }
+
+  signInWithEmailAndPassword() async{
+    try {
+      emit(SignInLoadingState());
+     await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailAddress!,
+          password: password!
+      );
+     emit(SignInSuccessState());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        emit(SignInFailureState(errMessage: 'No user found for that email.'));
+      } else if (e.code == 'wrong-password') {
+        emit(SignInFailureState(errMessage: 'Wrong password provided for that user.'));
+      }
+    } catch (e){
+      emit(SignInFailureState( errMessage: e.toString(),));
+    }
   }
 }
