@@ -17,6 +17,15 @@ final class SignInFailureState extends AuthState {
 
   SignInFailureState({required this.errMessage});
 }
+
+
+final class ForgetPasswordLoadingState extends AuthState {}
+final class ForgetPasswordSuccessState extends AuthState {}
+final class ForgetPasswordFailureState extends AuthState {
+  final String errMessage;
+
+  ForgetPasswordFailureState({required this.errMessage});
+}
 final class TermsAndConditionsCheckBoxState extends AuthState {}
 
 final class ObscurePasswordTextUpdateState extends AuthState {}

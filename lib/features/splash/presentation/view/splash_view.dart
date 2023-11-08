@@ -5,6 +5,7 @@ import 'package:daleel/core/utils/app_strings.dart';
 import 'package:daleel/core/utils/app_text_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -15,16 +16,20 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-   bool isOnBoardingVisited = getIt<CacheHelper>().getData(key: 'isOnBoardingVisited')?? false;
-   if(isOnBoardingVisited == true){
-     FirebaseAuth.instance.currentUser == null ? delayedNavigation(context, '/SignIn') : delayedNavigation(context, '/home') ;
-   }else{
-     delayedNavigation(context, '/onBoarding');
-   }
+    bool isOnBoardingVisited =
+        getIt<CacheHelper>().getData(key: 'isOnBoardingVisited') ?? false;
+    if (isOnBoardingVisited == true) {
+      FirebaseAuth.instance.currentUser == null
+          ? delayedNavigation(context, '/SignIn')
+          : FirebaseAuth.instance.currentUser!.emailVerified == true
+              ? delayedNavigation(context, '/home')
+              : delayedNavigation(context, '/signIn');
+    } else {
+      delayedNavigation(context, '/onBoarding');
+    }
 
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +44,9 @@ class _SplashViewState extends State<SplashView> {
   }
 }
 
-
 void delayedNavigation(context, path) {
-  Future.delayed(const Duration(seconds: 2),
-          () => customReplacementNavigation(context, path),);
+  Future.delayed(
+    const Duration(seconds: 2),
+    () => customReplacementNavigation(context, path),
+  );
 }

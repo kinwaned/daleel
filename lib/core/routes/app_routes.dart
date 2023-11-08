@@ -1,4 +1,5 @@
 import 'package:daleel/features/auth/presentation/cubits/auth_cubits/auth_cubit.dart';
+import 'package:daleel/features/auth/presentation/views/forget_password_view.dart';
 import 'package:daleel/features/auth/presentation/views/sign_in_view.dart';
 import 'package:daleel/features/auth/presentation/views/sin_up_view.dart';
 import 'package:daleel/features/home/presentation/views/home_view.dart';
@@ -30,13 +31,21 @@ final GoRouter router = GoRouter(
       builder: (context, state) =>
           BlocProvider(
             create: (context) => AuthCubit(),
-            child: SignInView(),
+            child: const SignInView(),
           ),
     ),
     GoRoute(
       path: '/home',
       builder: (context, state) =>
           const HomeView(),
+    ),
+    GoRoute(
+      path: '/forgetPassword',
+      builder: (context, state) =>
+          BlocProvider(
+            create: (context) => AuthCubit(),
+            child: const ForgetPasswordView(),
+          ),
     ),
   ],
 );
